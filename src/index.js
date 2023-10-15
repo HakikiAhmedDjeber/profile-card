@@ -46,7 +46,12 @@ function App() {
       <Text />
       <div className="skills">
         {skillsList.map((skill) => (
-          <Skill skillObj={skill} key={skill.skill} />
+          <Skill
+            skill={skill.skill}
+            level={skill.level}
+            color={skill.color}
+            key={skill.skill}
+          />
         ))}
         {/* <Skill name="Html + Css" imoji="🦾" color="#800080" />
         <Skill name="JavaScript" imoji="🥰" color="#DC143C" />
@@ -71,15 +76,10 @@ function Text() {
   );
 }
 
-function Skill({ skillObj }) {
+function Skill({ skill, level, color }) {
   return (
-    <span className="skill" style={{ backgroundColor: skillObj.color }}>
-      {skillObj.skill}{" "}
-      {skillObj.level === "beginner"
-        ? "👶"
-        : skillObj.level === "advanced"
-        ? "💪"
-        : "👍"}
+    <span className="skill" style={{ backgroundColor: color }}>
+      {skill} {level === "beginner" ? "👶" : level === "advanced" ? "💪" : "👍"}
     </span>
   );
 }
